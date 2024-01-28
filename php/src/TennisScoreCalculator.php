@@ -10,6 +10,10 @@ class TennisScoreCalculator
             return 'Deuce';
         }
 
+        if ($punchPlayer === 4 && $otherPlayer === 3) {
+            return 'Advantage punch player';
+        }
+
         $punchPlayerReadableScore = $this->readableScore($punchPlayer);
         $otherPlayerReadableScore = $this->readableScore($otherPlayer);
 

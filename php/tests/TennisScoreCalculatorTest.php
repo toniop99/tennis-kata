@@ -46,4 +46,11 @@ class TennisScoreCalculatorTest extends TestCase {
 
         self::assertEquals('Deuce', $score);
     }
+
+    /** @test */
+    public function punch_player_advantage() {
+        $score = $this->tennisScoreCalculator->score(4, 3);
+
+        self::assertEquals('Advantage punch player', $score);
+    }
 }
