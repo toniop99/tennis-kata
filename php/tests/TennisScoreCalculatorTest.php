@@ -39,4 +39,11 @@ class TennisScoreCalculatorTest extends TestCase {
 
         self::assertEquals('30 - 30', $score);
     }
+
+    /** @test */
+    public function players_deuce() {
+        $score = $this->tennisScoreCalculator->score(3, 3);
+
+        self::assertEquals('Deuce', $score);
+    }
 }

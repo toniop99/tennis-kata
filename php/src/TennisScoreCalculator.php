@@ -6,6 +6,10 @@ class TennisScoreCalculator
 {
     public function score(int $punchPlayer, int $otherPlayer): string
     {
+        if ($punchPlayer === $otherPlayer && $punchPlayer >= 3) {
+            return 'Deuce';
+        }
+
         $punchPlayerReadableScore = $this->readableScore($punchPlayer);
         $otherPlayerReadableScore = $this->readableScore($otherPlayer);
 
