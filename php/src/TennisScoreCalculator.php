@@ -10,8 +10,8 @@ class TennisScoreCalculator
             return 'Deuce';
         }
 
-        if ($punchPlayer >= 4 && $punchPlayer - $otherPlayer === 1) {
-            return 'Advantage punch player';
+        if ($this->isAdvantage($punchPlayer, $otherPlayer)) {
+            return $punchPlayer > $otherPlayer ? 'Advantage punch player' : 'Advantage other player';
         }
 
         $punchPlayerReadableScore = $this->readableScore($punchPlayer);
@@ -28,5 +28,11 @@ class TennisScoreCalculator
             2 => '30',
             3 => '40',
         };
+    }
+
+    private function isAdvantage(int $punchPlayer, int $otherPlayer): bool
+    {
+        return ($punchPlayer >= 4 && $punchPlayer - $otherPlayer === 1) ||
+            ($otherPlayer >= 4 && $otherPlayer - $punchPlayer === 1);
     }
 }

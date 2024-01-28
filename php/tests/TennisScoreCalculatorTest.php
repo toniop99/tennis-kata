@@ -60,4 +60,18 @@ class TennisScoreCalculatorTest extends TestCase {
 
         self::assertEquals('Advantage punch player', $score);
     }
+
+    /** @test */
+    public function other_player_advantage() {
+        $score = $this->tennisScoreCalculator->score(3, 4);
+
+        self::assertEquals('Advantage other player', $score);
+    }
+
+    /** @test */
+    public function other_player_advantage_after_deuce() {
+        $score = $this->tennisScoreCalculator->score(4, 5);
+
+        self::assertEquals('Advantage other player', $score);
+    }
 }
