@@ -13,6 +13,13 @@ class TennisScoreCalculatorTest extends TestCase {
     }
 
     /** @test */
+    public function valid_score_is_used() {
+        self::expectException(\InvalidArgumentException::class);
+        self::expectExceptionMessage('Invalid score');
+        $this->tennisScoreCalculator->score(-1, -1);
+    }
+
+    /** @test */
     public function punch_player_wins_first_ball() {
         $score = $this->tennisScoreCalculator->score(1, 0);
 

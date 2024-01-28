@@ -35,6 +35,7 @@ class TennisScoreCalculator
             1 => '15',
             2 => '30',
             3 => '40',
+            default => throw new \InvalidArgumentException('Invalid score'),
         };
     }
 
