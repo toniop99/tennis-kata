@@ -10,7 +10,7 @@ class TennisScoreCalculator
             return 'Deuce';
         }
 
-        if ($punchPlayer === 4 && $otherPlayer === 3) {
+        if ($punchPlayer >= 4 && $punchPlayer - $otherPlayer === 1) {
             return 'Advantage punch player';
         }
 
