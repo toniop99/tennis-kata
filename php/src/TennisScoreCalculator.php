@@ -10,6 +10,10 @@ class TennisScoreCalculator
             return '15 - 15';
         }
 
+        if ($punchPlayer === 2 && $otherPlayer === 2) {
+            return '30 - 30';
+        }
+
 
         if ($punchPlayer === 0 && $otherPlayer === 2) {
             return '0 - 30';
