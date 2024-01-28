@@ -6,19 +6,19 @@ class TennisScoreCalculator
 {
     public function score(int $punchPlayer, int $otherPlayer): string
     {
-        if ($punchPlayer === 1 && $otherPlayer === 1) {
-            return '15 - 15';
-        }
+        $punchPlayerReadableScore = $this->readableScore($punchPlayer);
+        $otherPlayerReadableScore = $this->readableScore($otherPlayer);
 
-        if ($punchPlayer === 2 && $otherPlayer === 2) {
-            return '30 - 30';
-        }
+        return $punchPlayerReadableScore . ' - ' . $otherPlayerReadableScore;
+    }
 
-
-        if ($punchPlayer === 0 && $otherPlayer === 2) {
-            return '0 - 30';
-        }
-
-        return '15 - 0';
+    private function readableScore(int $score): string
+    {
+        return match ($score) {
+            0 => '0',
+            1 => '15',
+            2 => '30',
+            3 => '40',
+        };
     }
 }
