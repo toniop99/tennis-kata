@@ -14,15 +14,22 @@ class TennisScoreCalculatorTest extends TestCase {
 
     /** @test */
     public function punch_player_wins_first_ball() {
-        $score = $this->tennisScoreCalculator->score(15, 0);
+        $score = $this->tennisScoreCalculator->score(1, 0);
 
         self::assertEquals('15 - 0', $score);
     }
 
     /** @test */
     public function fifteen_all() {
-        $score = $this->tennisScoreCalculator->score(15, 15);
+        $score = $this->tennisScoreCalculator->score(1, 1);
 
         self::assertEquals('15 - 15', $score);
+    }
+
+    /** @test */
+    public function other_player_wins_first_two_balls() {
+        $score = $this->tennisScoreCalculator->score(0, 2);
+
+        self::assertEquals('0 - 30', $score);
     }
 }
