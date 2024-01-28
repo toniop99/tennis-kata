@@ -88,4 +88,11 @@ class TennisScoreCalculatorTest extends TestCase {
 
         self::assertEquals('Punch player wins', $score);
     }
+
+    /** @test */
+    public function punch_player_wins_after_deuce() {
+        $score = $this->tennisScoreCalculator->score(5, 3);
+
+        self::assertEquals('Punch player wins', $score);
+    }
 }

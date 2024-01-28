@@ -6,11 +6,7 @@ class TennisScoreCalculator
 {
     public function score(int $punchPlayer, int $otherPlayer): string
     {
-        if ($punchPlayer === 4 && $otherPlayer === 0) {
-            return 'Punch player wins';
-        }
-
-        if ($punchPlayer === 4 && $otherPlayer === 2) {
+        if ($this->isWin($punchPlayer, $otherPlayer)) {
             return 'Punch player wins';
         }
 
@@ -36,6 +32,11 @@ class TennisScoreCalculator
             2 => '30',
             3 => '40',
         };
+    }
+
+    private function isWin(int $punchPlayer, int $otherPlayer): bool
+    {
+        return ($punchPlayer >= 4 && $punchPlayer - $otherPlayer >= 2);
     }
 
     private function isAdvantage(int $punchPlayer, int $otherPlayer): bool
