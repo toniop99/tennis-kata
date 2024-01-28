@@ -4,8 +4,8 @@ namespace Kata;
 
 class TennisScoreCalculator
 {
-    public function score(): string
+    public function score(int $punchplayer, int $otherPlayer): string
     {
-        return 'Love - Love';
+        return '15 - 0';
     }
 }
