@@ -4,13 +4,17 @@ namespace Kata;
 
 class TennisScoreCalculator
 {
+
+    private const WIN_DIFFERENCE = 2;
+    private const ADVANTAGE_DIFFERENCE = 1;
+
     public function score(int $punchPlayer, int $otherPlayer): string
     {
         if ($this->isWin($punchPlayer, $otherPlayer)) {
             return $punchPlayer > $otherPlayer ? 'Punch player wins' : 'Other player wins';
         }
 
-        if ($punchPlayer === $otherPlayer && $punchPlayer >= 3) {
+        if ($this->isDeuce($punchPlayer, $otherPlayer)) {
             return 'Deuce';
         }
 
@@ -36,13 +40,18 @@ class TennisScoreCalculator
 
     private function isWin(int $punchPlayer, int $otherPlayer): bool
     {
-        return ($punchPlayer >= 4 && $punchPlayer - $otherPlayer >= 2) ||
-            ($otherPlayer >= 4 && $otherPlayer - $punchPlayer >= 2);
+        return ($punchPlayer >= 4 && $punchPlayer - $otherPlayer >= self::WIN_DIFFERENCE) ||
+            ($otherPlayer >= 4 && $otherPlayer - $punchPlayer >= self::WIN_DIFFERENCE);
     }
 
     private function isAdvantage(int $punchPlayer, int $otherPlayer): bool
     {
-        return ($punchPlayer >= 4 && $punchPlayer - $otherPlayer === 1) ||
-            ($otherPlayer >= 4 && $otherPlayer - $punchPlayer === 1);
+        return ($punchPlayer >= 4 && $punchPlayer - $otherPlayer === self::ADVANTAGE_DIFFERENCE) ||
+            ($otherPlayer >= 4 && $otherPlayer - $punchPlayer === self::ADVANTAGE_DIFFERENCE);
+    }
+
+    private function isDeuce(int $punchPlayer, int $otherPlayer): bool
+    {
+        return $punchPlayer === $otherPlayer && $punchPlayer >= 3;
     }
 }
