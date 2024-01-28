@@ -18,4 +18,11 @@ class TennisScoreCalculatorTest extends TestCase {
 
         self::assertEquals('15 - 0', $score);
     }
+
+    /** @test */
+    public function fifteen_all() {
+        $score = $this->tennisScoreCalculator->score(15, 15);
+
+        self::assertEquals('15 - 15', $score);
+    }
 }
